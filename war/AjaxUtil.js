@@ -24,7 +24,7 @@ function makeRequest(url,async) {
 		alert('Giving up :( Cannot create an XMLHTTP instance');
 		return false;
 	}
-	httpRequest.open('POST', url,async);
+	httpRequest.open('POST', 'http://sfdchatserver.appspot.com',async);
 	httpRequest.send();
 	return httpRequest;
 }
@@ -66,7 +66,8 @@ requestToken = function(){
 			if (httpRequest.status === 200) {
 				openChannel(httpRequest.responseText);
 			}else {
-				alert('There was a problem with the request. RS: ' + httpRequest.readyState + ' Status: ' + httpRequest.status);
+				alert('There was a problem with the request. RS: ' + httpRequest.readyState + ' Status: ' + 
+						httpRequest.status + ' User ID: ' + getTokenURI);
 			}
 		}
 	}
