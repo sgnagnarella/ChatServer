@@ -59,7 +59,7 @@ loginUser = function(){
 };
 
 requestToken = function(){
-	var getTokenURI = '/gettoken?userid=' + userid ;
+	var getTokenURI = 'http://sfdchatserver.appspot.com/gettoken?userid=' + userid ;
 	var httpRequest = makeRequest(getTokenURI,true);
 	httpRequest.onreadystatechange = function(){
 		if (httpRequest.readyState === 4) {
