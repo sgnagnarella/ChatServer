@@ -36,17 +36,19 @@ function init(){
 }
 
 showLoginPage = function(){
+	alert("showLoginPage init");
 	document.getElementById("loginPage").style.display = "block";
 	document.getElementById("welcomePage").style.display = "none";
-	document.getElementById("userid").onkeydown = function(event){
+	/*document.getElementById("userid").onkeydown = function(event){
 		if (event.keyCode == 13){
 			loginUser();
 		}
-	}
+	}*/
 	document.getElementById("userid").focus();
 };
 
 loginUser = function(){
+	alert("loginUser init");
 	document.getElementById("loginPage").style.display = "none";
 	document.getElementById("chatMessagesPage").style.display = "block";
 	userid = document.getElementById("userid").value ;
@@ -64,7 +66,7 @@ requestToken = function(){
 			if (httpRequest.status === 200) {
 				openChannel(httpRequest.responseText);
 			}else {
-				alert('There was a problem with the request.');
+				alert('There was a problem with the request. RS: ' + httpRequest.readyState + ' Status: ' + httpRequest.status);
 			}
 		}
 	}
@@ -105,7 +107,7 @@ onSocketMessage = function(message) {
 
 
 displayFriendList =function(){
-	var txt = document.createElement("div");
+	/*var txt = document.createElement("div");
 	txt.innerHTML = "<p> Logged in as <b>"+userid+"</b><p><hr />";
 	document.getElementById("friendsListPage").appendChild(txt);	
 	var getFriendListURI = 'getFriendList?userid='+ userid;
@@ -119,7 +121,7 @@ displayFriendList =function(){
 		}else {
 			alert('There was a problem with the request.');
 		}
-	}
+	}*/
 };
 
 
