@@ -23,13 +23,9 @@ public class PartnerClient {
     private void createAccount() throws ConnectionException {
         SObject account = new SObject();
         account.setType("Account");
-        account.setField("Name", "My Account");
+        account.setField("Name", "My Account2");
         account.setField("Phone", "123 244 3455");
         connection.create(new SObject[]{account});
-    }
-
-    public static void main(String[] args) throws ConnectionException {
-        new PartnerClient();
     }
     
 
