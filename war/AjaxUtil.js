@@ -24,7 +24,7 @@ function makeRequest(url,async) {
 		alert('Giving up :( Cannot create an XMLHTTP instance');
 		return false;
 	}
-	httpRequest.open('POST', 'http://sfdchatserver.appspot.com',async);
+	httpRequest.open('POST', url, async);
 	httpRequest.send();
 	return httpRequest;
 }
