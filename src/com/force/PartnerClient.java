@@ -10,9 +10,11 @@ public class PartnerClient {
     private String username = "sebastiangnagnarella@demo.com";
     private String password = "Neme1507oNqR76lmqOYABImJYMgUX2jOZ";
     private PartnerConnection connection;
+    private PartnerConnection connection2;
 
     public PartnerClient() throws ConnectionException {
         ConnectorConfig config = new ConnectorConfig();
+        
         config.setUsername(username);
         config.setPassword(password);
         connection = Connector.newConnection(config);

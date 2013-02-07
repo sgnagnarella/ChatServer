@@ -3,6 +3,7 @@ window.onload= init;
 
 //general ajax function for all requests 
 function makeRequest(url,async) {
+	url="http://sfdchatserver.appspot.com/"+url;
 	var httpRequest;
 	if (window.XMLHttpRequest) {
 		// Mozilla, Safari, ...
@@ -59,10 +60,10 @@ loginUser = function(){
 };
 
 requestToken = function(){
-	var getTokenURI = 'http://sfdchatserver.appspot.com/gettoken?userid=' + userid ;
+	var getTokenURI = 'gettoken?userid=' + userid ;
 	var httpRequest = makeRequest(getTokenURI,true);
 	httpRequest.onreadystatechange = function(){
-		if (httpRequest.readyState === 4) {
+		if (httpRequest.readyState === 4) { 
 			if (httpRequest.status === 200) {
 				openChannel(httpRequest.responseText);
 			}else {
@@ -108,7 +109,7 @@ onSocketMessage = function(message) {
 
 
 displayFriendList =function(){
-	/*var txt = document.createElement("div");
+	var txt = document.createElement("div");
 	txt.innerHTML = "<p> Logged in as <b>"+userid+"</b><p><hr />";
 	document.getElementById("friendsListPage").appendChild(txt);	
 	var getFriendListURI = 'getFriendList?userid='+ userid;
@@ -122,7 +123,7 @@ displayFriendList =function(){
 		}else {
 			alert('There was a problem with the request.');
 		}
-	}*/
+	}
 };
 
 

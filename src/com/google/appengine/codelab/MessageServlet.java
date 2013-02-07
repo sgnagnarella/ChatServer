@@ -45,6 +45,7 @@ public class MessageServlet extends HttpServlet {
    */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
   throws ServletException, IOException {
+	response.setHeader("Access-Control-Allow-Origin", "*");  
     String message = request.getParameter("message");
     String user = request.getParameter("to");
     String from = request.getParameter("from");
@@ -77,4 +78,14 @@ public class MessageServlet extends HttpServlet {
   public void sendMessageToChannel(String user,String message) throws ChannelFailureException{
   	channelService.sendMessage(new ChannelMessage(user, message));
   }
+  
+  @Override
+  protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+  { 
+      // pre-flight request processing
+      resp.setHeader("Access-Control-Allow-Origin", "*");
+      resp.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+     // resp.setHeader("Access-Control-Allow-Headers", SUPPORTED_HEADERS);
+  }
+  
 }

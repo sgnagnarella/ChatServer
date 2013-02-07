@@ -46,6 +46,7 @@ public class TokenServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	  throws ServletException, IOException {
     String userId = request.getParameter("userid");
+    response.setHeader("Access-Control-Allow-Origin", "*");
     if (userId != null && !"".equals(userId)) {
     	/** TODO: Here we should include salesforce ID validation and we should retrieve users ***/
       String token = createChannel(userId);
@@ -88,5 +89,14 @@ public class TokenServlet extends HttpServlet {
     } catch(Exception exception){
       logger.log(Level.WARNING, "Unknow exception while writing output ");
     }
+  }
+  
+  @Override
+  protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+  { 
+      // pre-flight request processing
+      resp.setHeader("Access-Control-Allow-Origin", "*");
+      resp.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+     // resp.setHeader("Access-Control-Allow-Headers", SUPPORTED_HEADERS);
   }
 }

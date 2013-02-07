@@ -56,11 +56,14 @@ public class FriendServlet extends HttpServlet {
 	 */
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
   throws ServletException, IOException {
-  
+	  
+
 	String classpath = System.getProperty("java.classpath");  
 	  
   	String user = request.getParameter("userid"); 
   	response.setContentType("text/xml");
+  	response.setHeader("Access-Control-Allow-Origin", "*");
+  	
   	String outputTxt =	"<data>\n" ;
   	FriendStore friendStore = FriendStore.getInstance();
   	
@@ -95,6 +98,15 @@ public class FriendServlet extends HttpServlet {
     }
     outputTxt += "</data>\n";
     response.getWriter().print(outputTxt);
+  }
+  
+  @Override
+  protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+  { 
+      // pre-flight request processing
+      resp.setHeader("Access-Control-Allow-Origin", "*");
+      resp.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+     // resp.setHeader("Access-Control-Allow-Headers", SUPPORTED_HEADERS);
   }
   
 }
